@@ -1,6 +1,7 @@
 resource "aws_security_group" "allow_ssh_terraform" {
   description   = var.sg_description
     name        = var.sg_name
+
   
   # usually we allow evrything in egress
   egress {
@@ -21,11 +22,13 @@ resource "aws_security_group" "allow_ssh_terraform" {
 
   tags   = var.tags
 
+}
+
   resource "aws_instance" "terraform" {
     ami = var.ami_id
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.allow_ssh_terraform.id]
- 
+    
    tags   = {
     Name = "terraform"
    }

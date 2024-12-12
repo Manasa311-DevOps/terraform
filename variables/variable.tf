@@ -42,7 +42,6 @@ variable "to_port" {
 
 variable "protocol" {
     default =  "tcp"
-    type = number
 }
 
 variable "ingress_cidr" {
